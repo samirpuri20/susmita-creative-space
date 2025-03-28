@@ -27,41 +27,75 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Using FormSubmit.co service with proper configuration for CORS
-      // The email endpoint format is ajax.php?submit=email@example.com
-      const response = await fetch("https://formsubmit.co/ajax/girisusmita378@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `New message from ${formData.name} via your website`,
-        }),
-      });
+      // Alternative method using standard form submission to avoid CORS issues
+      // Create a hidden form and submit it programmatically
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://formsubmit.co/girisusmita378@gmail.com";
+      form.target = "_blank"; // Opens in a new tab - prevents navigation away from the site
 
-      const data = await response.json();
+      // Add inputs to form
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.name = "name";
+      nameInput.value = formData.name;
+      form.appendChild(nameInput);
+
+      const emailInput = document.createElement("input");
+      emailInput.type = "email";
+      emailInput.name = "email";
+      emailInput.value = formData.email;
+      form.appendChild(emailInput);
+
+      const messageInput = document.createElement("textarea");
+      messageInput.name = "message";
+      messageInput.value = formData.message;
+      form.appendChild(messageInput);
+
+      // Add subject field
+      const subjectInput = document.createElement("input");
+      subjectInput.type = "hidden";
+      subjectInput.name = "_subject";
+      subjectInput.value = `New message from ${formData.name} via your website`;
+      form.appendChild(subjectInput);
+
+      // Add redirect
+      const redirectInput = document.createElement("input");
+      redirectInput.type = "hidden";
+      redirectInput.name = "_next";
+      redirectInput.value = window.location.href;
+      form.appendChild(redirectInput);
+
+      // Prevent captcha
+      const captchaInput = document.createElement("input");
+      captchaInput.type = "hidden";
+      captchaInput.name = "_captcha";
+      captchaInput.value = "false";
+      form.appendChild(captchaInput);
+
+      // Auto-response
+      const autoResponseInput = document.createElement("input");
+      autoResponseInput.type = "hidden";
+      autoResponseInput.name = "_autoresponse";
+      autoResponseInput.value = "Thank you for contacting Susmita Giri. I'll get back to you shortly!";
+      form.appendChild(autoResponseInput);
+
+      // Append to body, submit, then remove
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+
+      // Use the sonner toast for a more modern look
+      toast.success("Message sent successfully!", {
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
       
-      if (data.success === "true" || response.ok) {
-        // Use the sonner toast for a more modern look
-        toast.success("Message sent successfully!", {
-          description: "Thank you for reaching out. I'll get back to you soon!",
-        });
-        
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      } else {
-        toast.error("Failed to send message", {
-          description: "Please try again later or contact me directly via email.",
-        });
-      }
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Error sending message:", error);
       toast.error("Failed to send message", {
