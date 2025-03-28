@@ -179,7 +179,7 @@ const Index = () => {
                 <div className="scroll-fade fade-up glass rounded-2xl overflow-hidden shadow-lg" style={{ animationDelay: "0.1s" }}>
                   <div className="aspect-[9/16] w-full bg-black">
                     <iframe
-                      src="https://www.tiktok.com/embed/v2/7175591746470559019"
+                      src="https://www.tiktok.com/embed/v2/7476006011090799890"
                       allowFullScreen
                       className="w-full h-full"
                     ></iframe>
@@ -210,7 +210,7 @@ const Index = () => {
                 <div className="scroll-fade fade-up glass rounded-2xl overflow-hidden shadow-lg" style={{ animationDelay: "0.2s" }}>
                   <div className="aspect-[9/16] w-full bg-black">
                     <iframe
-                      src="https://www.tiktok.com/embed/v2/7326593740111962394"
+                      src="https://www.tiktok.com/embed/v2/7473775311075822853"
                       allowFullScreen
                       className="w-full h-full"
                     ></iframe>
@@ -241,7 +241,7 @@ const Index = () => {
                 <div className="scroll-fade fade-up glass rounded-2xl overflow-hidden shadow-lg" style={{ animationDelay: "0.3s" }}>
                   <div className="aspect-[9/16] w-full bg-black">
                     <iframe
-                      src="https://www.tiktok.com/embed/v2/7128456723745988891"
+                      src="https://www.tiktok.com/embed/v2/7458593034486172935"
                       allowFullScreen
                       className="w-full h-full"
                     ></iframe>

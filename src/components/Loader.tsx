@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { CircleOff, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface PageLoaderProps {
   onLoadComplete: () => void;
@@ -41,8 +41,8 @@ const PageLoader: React.FC<PageLoaderProps> = ({ onLoadComplete }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-softblue/80 via-background to-softpink/80 transition-opacity duration-500">
-      <div className="relative mb-8">
-        <div className="absolute -top-32 left-1/2 transform -translate-x-1/2 w-64 h-64">
+      <div className="relative mb-12">
+        <div className="w-64 h-64 mb-8">
           <img 
             src="/lovable-uploads/a9a8ce5b-b724-4a84-a7f8-96fe94f4d8be.png" 
             alt="Susmita Giri" 
@@ -52,20 +52,6 @@ const PageLoader: React.FC<PageLoaderProps> = ({ onLoadComplete }) => {
               boxShadow: '0 0 30px rgba(255,255,255,0.8)'
             }}
           />
-        </div>
-      
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-36 h-36 rounded-full border-4 border-primary/30 flex items-center justify-center">
-              <div 
-                className="w-32 h-32 rounded-full border-4 border-t-primary border-r-primary border-b-transparent border-l-transparent animate-spin-slow"
-              />
-            </div>
-          </div>
-          
-          <div className="w-44 h-44 flex items-center justify-center invisible">
-            {/* Placeholder to create space */}
-          </div>
         </div>
         
         <div className="absolute -top-4 -right-4">
@@ -84,7 +70,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ onLoadComplete }) => {
         <p className="text-foreground/70 text-sm">Content Creator & Lifestyle Enthusiast</p>
       </div>
       
-      <div className="mt-2 w-64 h-2 bg-white/30 rounded-full overflow-hidden">
+      <div className="mt-4 w-64 h-2 bg-white/30 rounded-full overflow-hidden">
         <div 
           className="h-full bg-gradient-to-r from-purple-500 via-primary to-pink-500 rounded-full transition-all duration-300 ease-out"
           style={{ width: `${progress}%` }}
