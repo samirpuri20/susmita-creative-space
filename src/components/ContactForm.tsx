@@ -27,8 +27,9 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Using FormSubmit.co service to send emails without backend
-      const response = await fetch("https://formsubmit.co/girisusmita378@gmail.com", {
+      // Using FormSubmit.co service with proper configuration for CORS
+      // The email endpoint format is ajax.php?submit=email@example.com
+      const response = await fetch("https://formsubmit.co/ajax/girisusmita378@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +43,9 @@ const ContactForm: React.FC = () => {
         }),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+      
+      if (data.success === "true" || response.ok) {
         // Use the sonner toast for a more modern look
         toast.success("Message sent successfully!", {
           description: "Thank you for reaching out. I'll get back to you soon!",
