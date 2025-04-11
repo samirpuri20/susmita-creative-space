@@ -6,6 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import SocialLinks from "@/components/SocialLinks";
 import PageLoader from "@/components/Loader";
+import AIChat from "@/components/AIChat";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -335,6 +336,9 @@ const Index = () => {
           
           {/* Footer */}
           <Footer />
+
+          {/* AI Chat Component */}
+          <AIChat />
         </div>
       )}
     </>
